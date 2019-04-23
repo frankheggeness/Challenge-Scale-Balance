@@ -4,6 +4,16 @@ function scaleBalance(strArr) {
   let weightNumbers = strArr[1];
   let weightOne;
   let weightTwo;
+
+  // test for one weight on one side
+  for (let i = 0; i < weightNumbers.length; i++) {
+    let smallerOneWeightTest = smaller + weightNumbers[i];
+    if (smallerOneWeightTest === bigger) {
+      let weightOne = weightNumbers[i];
+      return weightOne.toString();
+    }
+  }
+
   // test for one weight on each side
   // test left side start first
   for (let i = 0; i < weightNumbers.length; i++) {
@@ -19,6 +29,7 @@ function scaleBalance(strArr) {
       }
     }
   }
+
   // test right side start second
   for (let i = 0; i < weightNumbers.length; i++) {
     let pairOne = scaleNumbers[1] + weightNumbers[i];
@@ -44,6 +55,7 @@ function scaleBalance(strArr) {
     smaller = scaleNumbers[0];
     bigger = scaleNumbers[1];
   }
+
   for (let i = 0; i < weightNumbers.length; i++) {
     let smallerOneWeight = smaller + weightNumbers[i];
     for (let y = i + 1; y < weightNumbers.length; y++) {
@@ -58,14 +70,6 @@ function scaleBalance(strArr) {
     }
   }
 
-  // test for one weight on one side
-  for (let i = 0; i < weightNumbers.length; i++) {
-    let smallerOneWeightTest = smaller + weightNumbers[i];
-    if (smallerOneWeightTest === bigger) {
-      let weightOne = weightNumbers[i];
-      return weightOne.toString();
-    }
-  }
   return 'not possible';
 }
 
